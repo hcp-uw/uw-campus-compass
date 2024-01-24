@@ -1,24 +1,45 @@
-# React Native + Node Template
-Created by Rasmus Makiniemi, curated by the Tech Team
+# UW Campus Compass - Project Specification
 
-## Background
-React Native is an open-source JavaScript framework that allows you to build mobile apps using the same codebase, enabling you to write code once and deploy it across different platforms, such as iOS, Android, and Windows.
+## Executive Summary
+The University of Washington Campus Compass project aims to improve the accessibility and convenience of locating campus amenities like vending machines, water fountains, and coffee machines. It addresses the challenges faced by students and faculty in efficiently navigating these resources.
 
-React Native is one of the leading mobile development frameworks, and is used by countless companies which you can find out more [about here](https://reactnative.dev/showcase).
+## Project Team Breakdown
+- **Project Manager:** Shivansh Shekhar, Vincent Kao
+- **Tech Lead:** Dylan Roselind
+- **Developers:** Marcel Ramirez, Smayan Nirantare
 
-## The Template
-This template uses Expo to seemlessly bridge the gap between developing on a computer to displaying on a mobile device. With the use of the Expo Go app on your phone and a simple one line command in your terminal, Expo generates a QR code for you to scan in the app to open your project on a phone.
+## Project Goals
+### MVP
+- A map displaying the location of amenities on the UW Campus.
+- Users can specify what they are looking for.
+- Marker pop-ups with detailed descriptions.
 
-As Expo automatically sends updates to the app on your phone, you can continuously keep coding and see the updates in real-time.
+### Post-MVP
+- Add more amenities like printers and coffee machines.
+- Expand locations to cover more of UW.
+- Implement a report feature for updates.
 
-## Getting Started
-For this project, you need two things installed, Expo Go on your phone and Node.js on your computer which you can find the downloads to here:
+## Tech Stack
+- **Front End:** React Native
+- **Back End:** Firebase
+- **API:** Google Maps API
 
-- [Expo Go](https://expo.dev/client)
-- [Node.js](https://nodejs.org/en/download)
+## Project Phases
+- Implement basic map with hardcoded locations.
+- Integrate Google Maps API for enhanced functionality.
+- Develop a user interface with location/pop-up cards and category selection.
 
-Once you are done with that, start following the steps listed in the README's in the `client` and `server` folders to set up and run the front-end and backend respectively.
+## Project Scope
+Focus initially on essential features like locating vending machines and water fountains, then expand to more specific functionalities.
 
-Happy coding!
+## Future Goals
+- Include more buildings and amenities.
+- Enhance user interface for cross-platform compatibility.
+- Provide real-time information updates and security features.
 
-*PS: This template is far from perfect, so if you find anything wrong, have any questions, or run into any steps you do not understand, reach out to the tech team!*
+## Key Performance Indicators
+- Functional testing using XCode.
+- Performance indicators include minimal bugs and lag-free operation.
+
+## Problem Statement
+The project aims to provide an efficient solution for locating essential campus amenities, enhancing accessibility and convenience for the university community.
