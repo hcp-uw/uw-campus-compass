@@ -1,7 +1,4 @@
-/* Any desired CSS styling can go here. */
-
-
-.map-container {
+.MapContainer {
     height: 400px;
 }
      
@@ -16,4 +13,13 @@
     left: 0;
     margin: 12px;
     border-radius: 4px;
+}
+
+.mapboxgl-canvas {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }

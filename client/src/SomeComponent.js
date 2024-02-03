@@ -18,6 +18,6 @@ export const SomeComponent = () => {
 const styles = StyleSheet.create({
 	text: {
 		color: "red",
-		fontSize: "20px",
+		fontSize: 20,
 	},
 });

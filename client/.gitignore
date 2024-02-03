@@ -36,3 +36,6 @@ yarn-error.*
 
 # firebase
 firebase/
+
+# mapbox config
+mapbox/
