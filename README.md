@@ -22,11 +22,11 @@ The University of Washington Campus Compass project aims to improve the accessib
 ## Tech Stack
 - **Front End:** React Native
 - **Back End:** Firebase
-- **API:** Google Maps API
+- **API:** Mapbox API
 
 ## Project Phases
 - Implement basic map with hardcoded locations.
-- Integrate Google Maps API for enhanced functionality.
+- Integrate MapBox API for enhanced functionality.
 - Develop a user interface with location/pop-up cards and category selection.
 
 ## Project Scope
