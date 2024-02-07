@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import Mapbox from '@rnmapbox/maps';
 
@@ -31,4 +31,4 @@ const styles = StyleSheet.create({
   map: {
     flex: 1
   }
-});
+}); */

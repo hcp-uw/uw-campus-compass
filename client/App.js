@@ -12,8 +12,8 @@ export default function App() {
 		// 	<StatusBar style="auto" />
 		// 	<SomeComponent />
 		// </View>
-		// <MapContainer /> // this is the react + mapbox one
-		<MapContent /> // this is the react native npm one 
+		<MapContainer /> // this is the react + mapbox one
+		// <MapContent /> // this is the react native npm one 
 	);
 }
 

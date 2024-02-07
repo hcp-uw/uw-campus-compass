@@ -1,12 +1,12 @@
 import React, { useRef, useEffect, useState } from 'react';
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import styles from './index.css'
-import 'mapbox-gl/dist/mapbox-gl.css';
+// import 'mapbox-gl/dist/mapbox-gl.css';
 
 // this is the react / mapbox direct approach
 // https://docs.mapbox.com/help/tutorials/use-mapbox-gl-js-with-react/
 
-mapboxgl.accessToken = 'sk.eyJ1IjoidXdjYW1wdXNjb21wYXNzIiwiYSI6ImNsczVnZXVsYjE3N3MybG4yeDJrYXZwbWcifQ.TLarK5RAcGNSX0HV9v3f_Q';
+mapboxgl.accessToken = 'pk.eyJ1IjoidXdjYW1wdXNjb21wYXNzIiwiYSI6ImNsczVlanlpaTBmOGUya3A2enNhemU3a2EifQ.0shmIuiEWiPRkc68amMBdQ';
 // be sure to add key here ^^
 
 export const MapContainer = () => {
@@ -33,7 +33,7 @@ export const MapContainer = () => {
   });
 
   return (
-    <div>
+    <div className={ styles.overallContainer }>
       <div className={ styles.sidebar }> {/* probably remove this? */}
         Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
       </div>
