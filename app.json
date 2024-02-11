@@ -1,0 +1,44 @@
+{
+  "expo": {
+    "name": "uw-campus-compass",
+    "slug": "uw-campus-compass",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.uwcampuscompass.CampusCompass"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "@rnmapbox/maps",
+        {
+          "RNMapboxMapsDownloadToken": "sk.eyJ1IjoidXdjYW1wdXNjb21wYXNzIiwiYSI6ImNsc2dwaWY1YTB1bmMyaXIyZjA5MG54NnEifQ.cmB_23st2NhAvMUliC5tSA"
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "7aa7e636-3903-4495-8590-75c8c5898d16"
+      }
+    }
+  }
+}
