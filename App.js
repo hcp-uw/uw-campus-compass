@@ -1,6 +1,6 @@
 import Mapbox from "@rnmapbox/maps";
 import React, { useRef, useState } from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { AppRegistry, Button, StyleSheet, Text, View } from "react-native";
 import { getResourcesOfType } from "./src/DatabaseOperations";
 
 Mapbox.setAccessToken(
@@ -27,7 +27,7 @@ const App = () => {
 
 	useState(() => {
 		const getResources = async () => {
-			const resources = await getResourcesOfType("vending");
+			const resources = await getResourcesOfType("fountain");
 			setResources(resources);
 		};
 		getResources();
@@ -37,6 +37,10 @@ const App = () => {
 		console.log(resource);
 	};
 
+	const handleMapPress = (event) => {
+		console.log(event.geometry.coordinates);
+	};
+
 	return (
 		<View style={styles.page}>
 			<View style={styles.container}>
@@ -44,6 +48,7 @@ const App = () => {
 					style={styles.map}
 					styleURL="mapbox://styles/mapbox/streets-v12"
 					onDidFinishLoadingMap={() => scrollTo(uwCoord)}
+					onPress={handleMapPress}
 				>
 					<Mapbox.Camera ref={mapViewRef} centerCoordinate={uwCoord} zoomLevel={12.9} />
 					{resources &&
@@ -62,7 +67,6 @@ const App = () => {
 		</View>
 	);
 };
-
 export default App;
 
 const styles = StyleSheet.create({
