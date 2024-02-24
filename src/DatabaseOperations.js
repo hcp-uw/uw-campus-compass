@@ -1,4 +1,4 @@
-import { collection, getDoc, getDocs, getFirestore, query, where } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, getFirestore, query, updateDoc, where } from "firebase/firestore";
 import { getDownloadURL, getStorage, ref } from "firebase/storage";
 
 import firebaseApp from "../firebase/firebaseConfig";
@@ -84,4 +84,23 @@ const getImage = async (docId) => {
 		});
 };
 
-export { getImage, getResourcesInBuilding, getResourcesOfType };
+/**
+ * Updates coords of resources in firestore
+ * @param resources an array of resources
+ */
+const updateResourcesCoords = async (resources) => {
+	try {
+		const promises = resources.map((resource) => {
+			const ref = doc(db, `Resources/${resource.id}`);
+			return updateDoc(ref, {
+				coords: resource.item.coords,
+			});
+		});
+
+		await Promise.all(promises);
+	} catch (err) {
+		console.error("Error updating docs", err);
+	}
+};
+
+export { getImage, getResourcesInBuilding, getResourcesOfType, updateResourcesCoords };
