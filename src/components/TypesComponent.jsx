@@ -11,8 +11,10 @@ export default function TypesComponent() {
     const [isChecked2, setChecked2] = useState(false);
     const [isChecked3, setChecked3] = useState(false);
     const [isChecked4, setChecked4] = useState(false);
-    const [isChecked, setChecked] = useState(false);
-    const [isChecked, setChecked] = useState(false);
+    const [isChecked5, setChecked5] = useState(false);
+    const [isChecked6, setChecked6] = useState(false);
+    const [isChecked7, setChecked7] = useState(false);
+
 
     return (
         <View style={styles.container}>
@@ -52,27 +54,19 @@ export default function TypesComponent() {
                         {/* left column content */}
                         <Checkbox
                             style={styles.checkbox}
-                            value={isChecked}
-                            onValueChange={setChecked}/>
-                        <Checkbox
-                            style={styles.checkbox}
-                            value={isChecked}
-                            onValueChange={setChecked}/>
+                            value={isChecked5}
+                            onValueChange={setChecked5}/>
                       </View>
                       <View style={styles.rectangleRight}>
                         {/* right column content */}
                         <Checkbox
                             style={styles.checkbox}
-                            value={isChecked}
-                            onValueChange={setChecked}/>
+                            value={isChecked6}
+                            onValueChange={setChecked6}/>
                         <Checkbox
                             style={styles.checkbox}
-                            value={isChecked}
-                            onValueChange={setChecked}/>
-                        <Checkbox
-                            style={styles.checkbox}
-                            value={isChecked}
-                            onValueChange={setChecked}/>
+                            value={isChecked7}
+                            onValueChange={setChecked7}/>
                       </View>
                     </View>
                 </View>
