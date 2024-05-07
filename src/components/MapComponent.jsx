@@ -1,7 +1,9 @@
-import Mapbox from "@rnmapbox/maps";
+import Mapbox, { Camera } from "@rnmapbox/maps";
 import React, { useRef, useState } from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 import { getResourcesOfType, updateResourcesCoords } from "../DatabaseOperations";
+import SearchBox from "./Search";
+import Header from "./header";
 
 Mapbox.setAccessToken(
 	"pk.eyJ1IjoidXdjYW1wdXNjb21wYXNzIiwiYSI6ImNsczVlanlpaTBmOGUya3A2enNhemU3a2EifQ.0shmIuiEWiPRkc68amMBdQ"
@@ -81,6 +83,7 @@ function MapComponent() {
 
 	return (
 		<View style={styles.page}>
+			<Header />
 			<View style={styles.container}>
 				<Mapbox.MapView
 					style={styles.map}
@@ -111,12 +114,13 @@ function MapComponent() {
 						</Text>
 					</View>
 				)}
-				<View>
+				{/* <View>
 					<Text>{movedResources.length} Moved</Text>
 					<Button style={styles.btn} title="Save" onPress={updateDatabaseWithMovedResources}>
 						Save
 					</Button>
-				</View>
+				</View> */}
+				<SearchBox />
 			</View>
 		</View>
 	);
