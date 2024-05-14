@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Dimensions } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Dimensions, Image } from "react-native";
 import Header from './header.jsx';
 import Checkbox from 'expo-checkbox';
 
@@ -26,54 +26,84 @@ export default function TypesComponent() {
                       {/* rectangle content */}
                       <View style={styles.rectangleLeft}>
                         {/* left column content */}
-                        <Checkbox
-                            style={styles.checkbox}
-                            value={isChecked1}
-                            onValueChange={setChecked1}/>
-                        {/* this is where the vending machine icon goes */}
+                        <View style={styles.checkboxContainer}>
+                            <Checkbox
+                                style={styles.checkbox}
+                                value={isChecked1}
+                                onValueChange={setChecked1}/>
+                            <View style={styles.checkboxImageContainer}>
+                                {/* this is where the vending machine icon goes */}
+                                <Image source={require('../../assets/vending_machine_icon.png')}
+                                    style={styles.vending_machine_icon} />
+                                <Text style={styles.checkboxLabel}>Vending Machines</Text>
+                            </View>
+                        </View>
                       </View>
                       <View style={styles.rectangleRight}>
                         {/* right column content */}
-                        <Checkbox
-                            style={styles.checkbox}
-                            value={isChecked2}
-                            onValueChange={setChecked2}/>
-                        <Checkbox
-                            style={styles.checkbox}
-                            value={isChecked3}
-                            onValueChange={setChecked3}/>
-                        <Checkbox
-                            style={styles.checkbox}
-                            value={isChecked4}
-                            onValueChange={setChecked4}/>
+                        <View style={styles.checkboxContainer}>
+                            <Checkbox
+                                style={styles.checkbox}
+                                value={isChecked2}
+                                onValueChange={setChecked2}/>
+                            <Text style={styles.checkboxLabel}>Drinks</Text>
+                        </View>
+                        <View style={styles.checkboxContainer}>
+                            <Checkbox
+                                style={styles.checkbox}
+                                value={isChecked3}
+                                onValueChange={setChecked3}/>
+                            <Text style={styles.checkboxLabel}>Snacks</Text>
+                        </View>
+                        <View style={styles.checkboxContainer}>
+                            <Checkbox
+                                style={styles.checkbox}
+                                value={isChecked4}
+                                onValueChange={setChecked4}/>
+                            <Text style={styles.checkboxLabel}>Utilities</Text>
+                        </View>
                       </View>
                     </View>
                     <View style={styles.rectangle}>
                       {/* rectangle content */}
                       <View style={styles.rectangleLeft}>
                         {/* left column content */}
-                        <Checkbox
-                            style={styles.checkbox}
-                            value={isChecked5}
-                            onValueChange={setChecked5}/>
+                        <View style={styles.checkboxContainer}>
+                            <Checkbox
+                                style={styles.checkbox}
+                                value={isChecked5}
+                                onValueChange={setChecked5}/>
+                            <View style={styles.checkboxImageContainer}>
+                                {/* this is where the vending machine icon goes */}
+                                <Image source={require('../../assets/water_fountain_icon.png')}
+                                    style={styles.vending_machine_icon} />
+                                <Text style={styles.checkboxLabel}>Water Fountains</Text>
+                            </View>
+                        </View>
                       </View>
                       <View style={styles.rectangleRight}>
                         {/* right column content */}
-                        <Checkbox
-                            style={styles.checkbox}
-                            value={isChecked6}
-                            onValueChange={setChecked6}/>
-                        <Checkbox
-                            style={styles.checkbox}
-                            value={isChecked7}
-                            onValueChange={setChecked7}/>
+                        <View style={styles.checkboxContainer}>
+                            <Checkbox
+                                style={styles.checkbox}
+                                value={isChecked6}
+                                onValueChange={setChecked6}/>
+                            <Text style={styles.checkboxLabel}>Drinking</Text>
+                        </View>
+                        <View style={styles.checkboxContainer}>
+                            <Checkbox
+                                style={styles.checkbox}
+                                value={isChecked7}
+                                onValueChange={setChecked7}/>
+                            <Text style={styles.checkboxLabel}>Bottle</Text>
+                        </View>
                       </View>
                     </View>
                 </View>
             </View>
             <View style={styles.locationbutton_container}>
                 <TouchableOpacity style={styles.locationbutton}>
-                    <Text style={styles.sltext}>Select Location</Text>
+                    <Text style={styles.sltext}>Select Location</Text> {/* add right arrow */}
                 </TouchableOpacity>
             </View>
             <View style={styles.bottomslider}>
@@ -165,4 +195,20 @@ const styles = StyleSheet.create({
     checkbox : {
 
     },
+    checkboxContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+    },
+    checkboxLabel : {
+        fontSize: 16,
+    },
+    checkboxImageContainer : {
+        alignItems: "center",
+        marginBottom: 5,
+    }, 
+    vending_machine_icon : {
+        resizeMode: 'contain',
+        width : windowWidth * 0.1,
+        height : windowHeight * 0.1,
+    }
 });
