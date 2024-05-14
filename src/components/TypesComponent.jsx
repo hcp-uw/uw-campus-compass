@@ -4,6 +4,7 @@ import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from "rea
 import Header from "./header.jsx";
 import SearchBox from "./Search.jsx";
 
+
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
