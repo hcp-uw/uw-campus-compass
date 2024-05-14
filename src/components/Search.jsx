@@ -2,9 +2,10 @@ import React, { useRef, useState } from "react";
 import { Animated, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-const SearchBox = () => {
+const SearchBox = (props) => {
 	const [currentState, setCurrentState] = useState(true);
 	const translateX = useRef(new Animated.Value(0)).current;
+	const { onSwitchView } = props;
 
 	const toggleState = () => {
 		const toValue = currentState ? 1 : 0;
@@ -13,6 +14,7 @@ const SearchBox = () => {
 			duration: 600,
 			useNativeDriver: true,
 		}).start();
+		onSwitchView(!currentState);
 		setCurrentState(!currentState);
 	};
 
@@ -50,6 +52,7 @@ const SearchBox = () => {
 
 const styles = StyleSheet.create({
 	outerContainer: {
+		zIndex: 1000,
 		display: "flex",
 		flexDirection: "row",
 		justifyContent: "flex-start",
@@ -61,7 +64,7 @@ const styles = StyleSheet.create({
 		bottom: 20,
 		left: "10%",
 		width: "80%",
-		height: 65,
+		height: 66,
 		paddingHorizontal: 30,
 		paddingVertical: 8,
 		backgroundColor: "rgba(0, 0, 0, 0.5)",
