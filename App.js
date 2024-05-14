@@ -7,7 +7,15 @@ import TypesComponent from "./src/components/TypesComponent";
 
 const App = () => {
 	const [mapVisible, setMapVisible] = useState(true);
-	const [searchParams, setSearchParams] = useState(null);
+	const [searchParams, setSearchParams] = useState({
+		vending: false,
+		drink: false,
+		snack: false,
+		utilities: false,
+		fountain: false,
+		drinking: false,
+		bottle: false,
+	});
 	const [resources, setResources] = useState([]);
 
 	const handleSwitchView = (view) => {
@@ -58,7 +66,11 @@ const App = () => {
 	return (
 		<>
 			<Header />
-			{mapVisible ? <MapComponent resources={resources} /> : <TypesComponent onSearch={handleSearch} />}
+			{mapVisible ? (
+				<MapComponent resources={resources} />
+			) : (
+				<TypesComponent onSearch={handleSearch} initialParams={searchParams} />
+			)}
 			<SearchBox onSwitchView={handleSwitchView} />
 		</>
 	);
