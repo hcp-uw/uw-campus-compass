@@ -22,7 +22,7 @@
     "react-native-icons": "^0.7.1",
     "react-native-tailwindcss": "^1.1.11",
     "@expo/vector-icons": "^14.0.0",
-    "react-native-vector-icons": "10.0.3"
+    "react-native-vector-icons": "10.0.3",
     "expo-checkbox": "~2.7.0"
   },
   "devDependencies": {

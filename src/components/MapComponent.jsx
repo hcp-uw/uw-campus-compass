@@ -1,9 +1,8 @@
 import Mapbox, { Camera } from "@rnmapbox/maps";
 import React, { useRef, useState } from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
-import { getResourcesOfType, updateResourcesCoords } from "../DatabaseOperations";
+import { getResourcesOfType, updateResourcesCoords } from "../../firebase/DatabaseOperations";
 import SearchBox from "./Search";
-import Header from "./header";
 
 Mapbox.setAccessToken(
 	"pk.eyJ1IjoidXdjYW1wdXNjb21wYXNzIiwiYSI6ImNsczVlanlpaTBmOGUya3A2enNhemU3a2EifQ.0shmIuiEWiPRkc68amMBdQ"
@@ -13,12 +12,12 @@ const uwLat = 47.655548;
 const uwLng = -122.3032;
 const uwCoord = [uwLng, uwLat];
 
-function MapComponent() {
-	const mapViewRef = useRef(null);
-	const [resources, setResources] = useState(null);
-	const [selectedResourceId, setSelectedResourceId] = useState(null);
+function MapComponent(props) {
+	// const [selectedResourceId, setSelectedResourceId] = useState(null);
+	// const [movedResources, setMovedResources] = useState([]);
 
-	const [movedResources, setMovedResources] = useState([]);
+	const mapViewRef = useRef(null);
+	const { resources, onSwitchView } = props;
 
 	/**scroll map camera to given coords  */
 	const scrollTo = (coords) => {
@@ -31,65 +30,56 @@ function MapComponent() {
 		}
 	};
 
-	useState(() => {
-		const getResources = async () => {
-			const resources = await getResourcesOfType("fountain");
-			setResources(resources);
-		};
-		getResources();
-	}, []);
+	// const resourceSelected = (resource) => {
+	// 	//use selected a marker on map
+	// 	console.log(resource.item.description, resource.item.floor, resource.item.building);
+	// 	setSelectedResourceId(resource.id);
+	// };
 
-	const resourceSelected = (resource) => {
-		//use selected a marker on map
-		console.log(resource.item.description, resource.item.floor, resource.item.building);
-		setSelectedResourceId(resource.id);
-	};
+	// const handleMapPress = (event) => {
+	// 	//user touched map
+	// 	if (selectedResourceId && resources) {
+	// 		//if resource was selected, then move marker to new coord
+	// 		const moved = movedResources;
+	// 		//already moved before
+	// 		if (moved.some((resource) => resource.id === selectedResourceId)) {
+	// 			moved.map((resource) => {
+	// 				if (resource.id === selectedResourceId) {
+	// 					return { ...resource.item };
+	// 				}
+	// 			});
+	// 		} else {
+	// 			//not yet moved
+	// 			moved.push(resources.find((resource) => resource.id === selectedResourceId));
+	// 		}
+	// 		setMovedResources(moved);
 
-	const handleMapPress = (event) => {
-		//user touched map
-		if (selectedResourceId && resources) {
-			//if resource was selected, then move marker to new coord
-			const moved = movedResources;
-			//already moved before
-			if (moved.some((resource) => resource.id === selectedResourceId)) {
-				moved.map((resource) => {
-					if (resource.id === selectedResourceId) {
-						return { ...resource.item };
-					}
-				});
-			} else {
-				//not yet moved
-				moved.push(resources.find((resource) => resource.id === selectedResourceId));
-			}
-			setMovedResources(moved);
+	// 		setSelectedResourceId(null);
+	// 		resources.map((resource) => {
+	// 			if (resource.id === selectedResourceId) {
+	// 				const selectedCoord = event.geometry.coordinates;
+	// 				resource.item.coords = { longitude: selectedCoord[0], latitude: selectedCoord[1] };
+	// 			}
+	// 			return resource;
+	// 		});
+	// 	}
+	// };
 
-			setSelectedResourceId(null);
-			resources.map((resource) => {
-				if (resource.id === selectedResourceId) {
-					const selectedCoord = event.geometry.coordinates;
-					resource.item.coords = { longitude: selectedCoord[0], latitude: selectedCoord[1] };
-				}
-				return resource;
-			});
-		}
-	};
-
-	const updateDatabaseWithMovedResources = async () => {
-		console.log(movedResources);
-		await updateResourcesCoords(movedResources);
-		//reset movedResourcesRef
-		setMovedResources([]);
-	};
+	// const updateDatabaseWithMovedResources = async () => {
+	// 	console.log(movedResources);
+	// 	await updateResourcesCoords(movedResources);
+	// 	//reset movedResourcesRef
+	// 	setMovedResources([]);
+	// };
 
 	return (
 		<View style={styles.page}>
-			<Header />
 			<View style={styles.container}>
 				<Mapbox.MapView
 					style={styles.map}
 					styleURL="mapbox://styles/mapbox/streets-v12"
 					onDidFinishLoadingMap={() => scrollTo(uwCoord)}
-					onPress={handleMapPress}
+					// onPress={handleMapPress}
 				>
 					<Mapbox.Camera ref={mapViewRef} centerCoordinate={uwCoord} zoomLevel={12.9} />
 					{resources &&
@@ -99,12 +89,13 @@ function MapComponent() {
 									key={resource.id}
 									id={resource.id}
 									coordinate={[resource.item.coords.longitude, resource.item.coords.latitude]}
-									onSelected={() => resourceSelected(resource)}
+									// onSelected={() => resourceSelected(resource)}
 								></Mapbox.PointAnnotation>
 							);
 						})}
 				</Mapbox.MapView>
-				{selectedResourceId && (
+
+				{/* {selectedResourceId && (
 					<View style={styles.alert}>
 						<Text style={{ color: "white" }}>
 							(Tap to move)
@@ -113,14 +104,13 @@ function MapComponent() {
 							{resources.find((resource) => resource.id === selectedResourceId).item.floor} {"    "}
 						</Text>
 					</View>
-				)}
+				)} */}
 				{/* <View>
 					<Text>{movedResources.length} Moved</Text>
 					<Button style={styles.btn} title="Save" onPress={updateDatabaseWithMovedResources}>
 						Save
 					</Button>
 				</View> */}
-				<SearchBox />
 			</View>
 		</View>
 	);

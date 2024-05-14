@@ -1,7 +1,7 @@
 import { collection, doc, getDoc, getDocs, getFirestore, query, updateDoc, where } from "firebase/firestore";
 import { getDownloadURL, getStorage, ref } from "firebase/storage";
 
-import firebaseApp from "../firebase/firebaseConfig";
+import firebaseApp from "./firebaseConfig";
 
 const db = getFirestore(firebaseApp);
 const resourcesRef = collection(db, "Resources");
