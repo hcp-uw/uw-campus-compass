@@ -39,6 +39,20 @@ export default function TypesComponent(props) {
 		readyToSubmit();
 	}, [isChecked1, isChecked2, isChecked3, isChecked4, isChecked5, isChecked6, isChecked7]);
 
+	// auto check sub boxes
+	const handleVendingCheckboxChange = (newValue) => {
+		setChecked1(newValue);
+		setChecked2(newValue);
+		setChecked3(newValue);
+		setChecked4(newValue);
+  };
+	const handleFountainCheckboxChange = (newValue) => {
+    setChecked5(newValue);
+		setChecked6(newValue);
+		setChecked7(newValue);
+  };
+
+
 	return (
 		<View style={styles.container}>
 			<View style={styles.mainbody}>
@@ -48,7 +62,8 @@ export default function TypesComponent(props) {
 						<View style={styles.rectangleLeft}>
 							{/* left column content */}
 							<View style={styles.checkboxContainer}>
-								<Checkbox style={styles.checkbox} value={isChecked1} onValueChange={setChecked1} />
+								{/* <Checkbox style={styles.checkbox} value={isChecked1} onValueChange={setChecked1} /> */}
+								<Checkbox style={styles.checkbox} value={isChecked1} onValueChange={(newValue) => handleVendingCheckboxChange(newValue)} />
 								<View style={styles.checkboxImageContainer}>
 									{/* this is where the vending machine icon goes */}
 									<Image
@@ -80,7 +95,8 @@ export default function TypesComponent(props) {
 						<View style={styles.rectangleLeft}>
 							{/* left column content */}
 							<View style={styles.checkboxContainer}>
-								<Checkbox style={styles.checkbox} value={isChecked5} onValueChange={setChecked5} />
+								{/* <Checkbox style={styles.checkbox} value={isChecked5} onValueChange={setChecked5} /> */}
+								<Checkbox style={styles.checkbox} value={isChecked5} onValueChange={(newValue) => handleFountainCheckboxChange(newValue)} />
 								<View style={styles.checkboxImageContainer}>
 									{/* this is where the vending machine icon goes */}
 									<Image
